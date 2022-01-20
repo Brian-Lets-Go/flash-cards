@@ -1,5 +1,5 @@
 var cardIndex = 0;
-var currentCard = cards[cardIndex];
+
 
 var cards = [
     {
@@ -16,38 +16,47 @@ var cards = [
     }
 ]
 
-
 var questionEl = document.querySelector("#question");
 var answerEl = document.querySelector("#answer");
 var answerButton = document.querySelector("#answer-button");
 var nextButton = document.querySelector("#next-button");
 
+
 function displayQuestion() {
-
+    
+       
     console.log("question");
-    
-    for (var i = 0; i < cards.length; i++) {
-    
-        var pTag = document.createElement("p");
 
-        pTag.textContent = cards[i].question;
+    questionEl.innerHTML = "";
 
-        questionEl.appendChild(pTag);
+    var pTag = document.createElement("p");
 
-        cardIndex++;
+    pTag.textContent = cards[cardIndex].question;
 
-    }
-    
+    questionEl.appendChild(pTag);
+
+    cardIndex++;
+
 }
 
 function revealAnswer() {
 
     console.log("answer");
 
-    currentCard.answer.setAttribute("class", "show");
+    var currentCard = cards[cardIndex];
+
+    var currentAnswer = currentCard.answer;
+
+    console.log(currentAnswer);
+
+    var pTag = document.createElement("p");
+
+    pTag.textContent = currentAnswer
+
+    answerEl.appendChild(pTag);
 
 }
 
-answerButton.onclick = revealAnswer()
+answerButton.onclick = revealAnswer
 
-nextButton.onclick = displayQuestion()
+nextButton.onclick = displayQuestion
